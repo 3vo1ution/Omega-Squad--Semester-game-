@@ -33,9 +33,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "New action",
+                    "name": "Shoot",
                     "type": "Button",
-                    "id": "e7f3b264-7b5f-4458-ac2f-1aaf513289ac",
+                    "id": "b5600620-b83a-4670-b6b6-0038e82c88d2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pick Up",
+                    "type": "Button",
+                    "id": "b7d2b9a7-1c5a-4f46-b037-1bb366643255",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -210,12 +219,45 @@
                 },
                 {
                     "name": "",
-                    "id": "1e710e41-2da7-46f7-83fa-35af9caec9bc",
-                    "path": "",
+                    "id": "da04991e-da6c-4379-a4f6-aa48e8637cf3",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "New action",
+                    "groups": "Keyboard",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a10db46-c23a-4d7d-b3c8-4fdcdb142b0f",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4d8df25-3da1-4679-91cc-e9db6f5d5a67",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pick Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "106be1a2-b53e-49cb-b3b2-fc0771e6a2e8",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Pick Up",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
