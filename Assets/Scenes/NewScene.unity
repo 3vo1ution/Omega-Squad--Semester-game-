@@ -771,6 +771,10 @@ MonoBehaviour:
   firePoint: {fileID: 1771451212}
   projectileSpeed: 20
   pickUpRange: 3
+  crouchHeight: 1
+  standingHeight: 2
+  crouchSpeed: 1.5
+  isCrouching: 0
   holdPosition: {fileID: 317371305}
 --- !u!1 &1445297620
 GameObject:
