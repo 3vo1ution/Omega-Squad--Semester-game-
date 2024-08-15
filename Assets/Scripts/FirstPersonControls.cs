@@ -48,9 +48,18 @@ public class FirstPersonControls : MonoBehaviour
     public Transform holdPosition; // Position where the picked-up object will be held
     private GameObject heldObject; // Reference to the currently held object
 
+    [Header("Inventory")]
+    [Space(5)]
+    private GameObject StowObject;
+    private FirstPersonController firstpersonconroller;
+    public int inventorySize = 5; //sets a value for the maximum inventory size
+    public int[] inventory; //an array to store the different items (the backpack)
+    public int itemCount = 0;
+
 
     private void Awake()
     {
+        inventory = new int[inventorySize];
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
     }
@@ -210,6 +219,26 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.parent = holdPosition;
 
                 holdingGun = false;
+            }
+            if (itemCount >= inventorySize)
+            {
+                Debug.Log("You are carrying too much!!");
+            }
+            else if (hit.collider.CompareTag("Stow")) //changed the tag from PickUp to Stow 
+            {
+
+                StowObject = hit.collider.gameObject;
+                Debug.Log("Object Hit");
+                Destroy(StowObject);//We want it to destroy the object because we want is so
+                                    // that once the item is picked up, it is added to the players 
+                                    // backpack so that once a player has collected a certain amount of that item
+                                    // they can then craft another item out of it 
+                                    // so eventually we'll have a
+                                    // if (itemCount==5)
+                                    // { craft item2 (idk the code for this yet)}
+
+                itemCount++;
+                Debug.Log(itemCount);
             }
         }
     }
