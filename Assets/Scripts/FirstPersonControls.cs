@@ -9,6 +9,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
 using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.UI;
+using UnityEngine.PlayerLoop;
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -55,7 +57,12 @@ public class FirstPersonControls : MonoBehaviour
     public int inventorySize = 5; //sets a value for the maximum inventory size
     public int[] inventory; //an array to store the different items (the backpack)
     public int itemCount = 0;
+    public Text itemCountText; //for UI text
 
+    void Start()
+    {
+        UpdateItemCountUI();
+    }
 
     private void Awake()
     {
@@ -98,6 +105,8 @@ public class FirstPersonControls : MonoBehaviour
         Move();
         LookAround();
         ApplyGravity();
+        UpdateItemCountUI(); // i put this in the update so that the
+                             // code could continuously update the Text with the current item count
     }
 
     public void Move()
@@ -258,7 +267,11 @@ public class FirstPersonControls : MonoBehaviour
        
 
     }
-    
-    
+    void UpdateItemCountUI()  //updates the UI text with the current item count as a string
+    {
+        itemCountText.text = "Items: " + itemCount.ToString();
     }
+
+
+}
 
