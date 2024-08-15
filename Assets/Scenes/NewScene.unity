@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 881418981}
   m_Layer: 0
   m_Name: Item
-  m_TagString: Pick Up
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -776,6 +776,9 @@ MonoBehaviour:
   crouchSpeed: 1.5
   isCrouching: 0
   holdPosition: {fileID: 317371305}
+  inventorySize: 5
+  inventory: 
+  itemCount: 0
 --- !u!1 &1445297620
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ TagManager:
   - Bullet
   - Gun
   - Pick Up
+  - PickUp
+  - Stow
   layers:
   - Default
   - TransparentFX
