@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6684623610625079260
+--- !u!114 &-4126904872170814606
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,9 +20,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Peach Material
+  m_Name: Yellow Material Variant Variant
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: 70b72c18a1a935443b060bf21dc6cc47, type: 2}
+  m_Parent: {fileID: 2100000, guid: addde49d8ab549846830f25db344d327, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -40,6 +40,6 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _BaseColor: {r: 0.8792453, g: 0.6835376, b: 0.5623852, a: 1}
-    - _Color: {r: 0.8792453, g: 0.6835376, b: 0.5623852, a: 1}
+    - _BaseColor: {r: 0.4113207, g: 0.2753942, b: 0.06131002, a: 1}
+    - _Color: {r: 0.41132066, g: 0.27539414, b: 0.061309993, a: 1}
   m_BuildTextureStacks: []
