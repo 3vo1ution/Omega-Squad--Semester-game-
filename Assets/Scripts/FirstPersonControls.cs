@@ -269,7 +269,7 @@ public class FirstPersonControls : MonoBehaviour
     }
     void UpdateItemCountUI()  //updates the UI text with the current item count as a string
     {
-        itemCountText.text = "Items: " + itemCount.ToString();
+        itemCountText.text = "Gumballs Collected: " + itemCount.ToString();
     }
 
 
