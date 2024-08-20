@@ -9,6 +9,8 @@ TagManager:
   - Pick Up
   - PickUp
   - Stow
+  - Switch
+  - Door
   layers:
   - Default
   - TransparentFX

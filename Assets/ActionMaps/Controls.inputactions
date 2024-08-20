@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Look Around",
+                    "name": "Look ",
                     "type": "Value",
                     "id": "731dd497-ac76-427a-97bf-1cf9ea4f2166",
                     "expectedControlType": "Vector2",
@@ -54,6 +54,15 @@
                     "name": "Crouch",
                     "type": "Button",
                     "id": "915e7201-7fa1-4649-99d1-dce57a5a6771",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact ",
+                    "type": "Button",
+                    "id": "cd26377e-f24e-4e45-80bf-4a1d49c25c27",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -188,8 +197,8 @@
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "ScaleVector2",
-                    "groups": "",
-                    "action": "Look Around",
+                    "groups": "Keyboard",
+                    "action": "Look ",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -200,7 +209,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look Around",
+                    "action": "Look ",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -289,6 +298,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2a4f11e-cc1a-4b59-9d22-203c9acb4749",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact ",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
