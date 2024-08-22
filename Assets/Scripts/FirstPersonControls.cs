@@ -252,6 +252,7 @@ public class FirstPersonControls : MonoBehaviour
                                     // { craft item2 (idk the code for this yet)}
 
                 itemCount++;
+                UpdateItemCountUI();
                 Debug.Log(itemCount);
             }
         }
