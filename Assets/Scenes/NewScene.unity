@@ -37651,7 +37651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8.48
-  lookSpeed: 4.34
+  lookSpeed: 2
   gravity: -4.77
   jumpHeight: 3.14
   playerCamera: {fileID: 1445297623}
