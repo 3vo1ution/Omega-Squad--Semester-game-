@@ -62,11 +62,7 @@ public class AudioManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    /// <summary>
-    /// Callback method when a new scene is loaded.
-    /// </summary>
-    /// <param name="scene">The scene that was loaded.</param>
-    /// <param name="mode">The load scene mode.</param>
+   
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Determine which scene is loaded and play corresponding music

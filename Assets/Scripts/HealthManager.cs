@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -35,6 +36,10 @@ public class HealthManager : MonoBehaviour
             timer = DecreaseInterval;
         }
 
+        if (currentHealth <=0)
+        {
+            Die();
+        }
     }
 
 
@@ -52,6 +57,8 @@ public class HealthManager : MonoBehaviour
         healthBar.SetSlider(currentHealth);// update slider
 
         Debug.Log("Health:" + currentHealth);
+
+
     }
 
     public void HealthIncrease(float health)
@@ -69,6 +76,10 @@ public class HealthManager : MonoBehaviour
 
     }
 
+    private void Die()
+    {
+        SceneManager.LoadScene("StartingScene");
+    }
 
 
 }
