@@ -45,8 +45,11 @@ public class FirstPersonControls : MonoBehaviour
 
     [Header("INTERACT SETTINGS")]
     [Space(5)]
-    public Material switchMaterial; // Material to apply when switch is activated
-    public GameObject[] objectsToChangeColor; // Array of objects to change color
+    //public Terrain switchTerrain; // Material to apply when switch is activated
+    public GameObject currentTerrain; // Reference to the currently active terrain
+    public GameObject newTerrain; // Reference to the new terrain to switch to
+
+    //public GameObject[] objectsToChangeColor; // Array of objects to change color
 
     [Header("Inventory")]
     [Space(5)]
@@ -284,15 +287,23 @@ public class FirstPersonControls : MonoBehaviour
         {
             if (hit.collider.CompareTag("Switch")) // Assuming the switch has this tag
             {
-                // Change the material color of the objects in the array
-                foreach (GameObject obj in objectsToChangeColor)
+                if (currentTerrain != null && newTerrain != null)
                 {
-                    Renderer renderer = obj.GetComponent<Renderer>();
-                    if (renderer != null)
-                    {
-                        renderer.material.color = switchMaterial.color; // Set the color to match the switch material color
-                    }
+                    // Deactivate the current terrain
+                    currentTerrain.SetActive(false);
+
+                    // Activate the new terrain
+                    newTerrain.SetActive(true);
                 }
+                // Change the material color of the objects in the array
+                //  foreach (GameObject obj in objectsToChangeColor)
+                //  {
+                //   Renderer renderer = obj.GetComponent<Renderer>();
+                //  if (renderer != null)
+                //{
+                //  renderer.material.color = switchMaterial.color; // Set the color to match the switch material color
+                //}
+                // }
             }
 
             else if (hit.collider.CompareTag("Door")) // Check if the object is a door
