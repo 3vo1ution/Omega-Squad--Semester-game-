@@ -11,6 +11,7 @@ TagManager:
   - Stow
   - Switch
   - Door
+  - Health
   layers:
   - Default
   - TransparentFX

@@ -60,7 +60,9 @@ public class FirstPersonControls : MonoBehaviour
     public int itemCount = 0;
     public Text itemCountText; //for UI text
 
-
+    //health text 
+    public GameObject healthText;
+    public GameObject dialogue1Text;
 
     private void Awake()
     {
@@ -113,6 +115,7 @@ public class FirstPersonControls : MonoBehaviour
         Move();
         LookAround();
         ApplyGravity();
+        checkForPickup();
     }
 
     public void Move()
@@ -334,6 +337,30 @@ public class FirstPersonControls : MonoBehaviour
             yield return null; // Wait until the next frame before continuing the loop
         }
     }
+    public void checkForPickup()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        // Debugging: Draw the ray in the Scene view
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
 
 
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            // Check if the hit object has the tag "PickUp"
+            if (hit.collider.CompareTag("Health"))
+            {
+                healthText.SetActive(true);
+
+            }
+            else
+            {
+                healthText.SetActive(false);
+            }
+
+        }
+
+
+    }
 }
