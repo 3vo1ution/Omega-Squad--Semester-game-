@@ -22,9 +22,6 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            dialogueManager.HideDialogue();  // Optional: manually hide the dialogue when exiting the trigger
-        }
+       
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - Switch
   - Door
   - Health
+  - Dialogue1
   layers:
   - Default
   - TransparentFX
