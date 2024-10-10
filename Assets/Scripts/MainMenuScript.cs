@@ -15,6 +15,12 @@ public class MainMenuScript : MonoBehaviour
         Application.Quit();
     }
 
+    public void pauseGame()
+
+    {
+        SceneManager.LoadScene("StartingScene");
+    }
+
 }
 
 
