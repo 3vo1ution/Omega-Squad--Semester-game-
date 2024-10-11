@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class FirstPersonControls : MonoBehaviour
 {
+    
 
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
@@ -55,18 +56,21 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     private GameObject StowObject;
     private FirstPersonController firstpersonconroller;
-    public int inventorySize = 5; //sets a value for the maximum inventory size
+    public int RequiredGumballs = 5; // Number of gumballs required to open the door
     public int[] inventory; //an array to store the different items (the backpack)
     public int itemCount = 0;
     public Text itemCountText; //for UI text
 
+    [Header("Gumball Collection")] // Checking gumballs before opening a door
+    public Text errorMessageText; // UI Text for displaying the error message
+    public float errorMessageDuration = 3f; // How long before hiding the error message
     //health text 
     public GameObject healthText;
     public GameObject dialogue1Text;
 
     private void Awake()
     {
-        inventory = new int[inventorySize];
+        inventory = new int[RequiredGumballs];
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
     }
@@ -240,7 +244,7 @@ public class FirstPersonControls : MonoBehaviour
 
                 holdingGun = true;
             }
-            if (itemCount >= inventorySize)
+            if (itemCount >= RequiredGumballs)
             {
                 Debug.Log("You are carrying too much!!");
             }
@@ -311,8 +315,21 @@ public class FirstPersonControls : MonoBehaviour
 
             else if (hit.collider.CompareTag("Door")) // Check if the object is a door
             {
+                if (itemCount >= RequiredGumballs) // Check if player has enough gumballs tp open the door
+                {
+                    // Open the door if enough gumballs are collected
+                    StartCoroutine(RaiseDoor(hit.collider.gameObject));
+                    errorMessageText.gameObject.SetActive(false); // Hide the error message if door is opened
+                }
+                else
+                {
+                    // Show error message if not enough gumballs are collected
+                    errorMessageText.text = "You need " + RequiredGumballs + " gumballs to open this door!";
+                    errorMessageText.gameObject.SetActive(true); // Show the error message
+                    StartCoroutine(HideErrorMessageAfterDelay()); // Start coroutine to hide the message
+                }
                 // Start moving the door upwards
-                StartCoroutine(RaiseDoor(hit.collider.gameObject));
+                //StartCoroutine(RaiseDoor(hit.collider.gameObject));
             }
         }
     }
@@ -337,6 +354,13 @@ public class FirstPersonControls : MonoBehaviour
             yield return null; // Wait until the next frame before continuing the loop
         }
     }
+
+    private IEnumerator HideErrorMessageAfterDelay()
+    {
+        yield return new WaitForSeconds(errorMessageDuration); // Wait for the duration listed above
+        errorMessageText.gameObject.SetActive(false); 
+    }
+
     public void checkForPickup()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
