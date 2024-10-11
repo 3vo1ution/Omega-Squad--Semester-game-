@@ -22,4 +22,6 @@ public class NoteAppear : MonoBehaviour
 
         _noteImage.enabled = false;
     }
+    
+    
 }
