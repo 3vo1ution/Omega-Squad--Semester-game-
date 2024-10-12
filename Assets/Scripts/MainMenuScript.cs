@@ -21,6 +21,11 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene("StartingScene");
     }
 
+    public void startGame()
+    {
+        SceneManager.LoadScene("NewScene");
+    }
+
 }
 
 
