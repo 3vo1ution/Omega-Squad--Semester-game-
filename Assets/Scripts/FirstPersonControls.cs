@@ -57,9 +57,12 @@ public class FirstPersonControls : MonoBehaviour
     private GameObject StowObject;
     private FirstPersonController firstpersonconroller;
     public int RequiredGumballs = 5; // Number of gumballs required to open the door
+    public int RequiredGumballsGK = 4;
     public int[] inventory; //an array to store the different items (the backpack)
     public int itemCount = 0;
     public Text itemCountText; //for UI text
+    public int FlyerCount = 0;
+    public Text FlyerCountText; //for UI text
 
     [Header("Gumball Collection")] // Checking gumballs before opening a door
     public Text errorMessageText; // UI Text for displaying the error message
@@ -78,6 +81,7 @@ public class FirstPersonControls : MonoBehaviour
     private void Start()
     {
         UpdateItemCountUI(); // Initialize the UI with the current item count
+        UpdateFlyerCountUI();
     }
 
 
@@ -244,7 +248,7 @@ public class FirstPersonControls : MonoBehaviour
 
                 holdingGun = true;
             }
-            if (itemCount >= RequiredGumballs)
+            if (itemCount >= RequiredGumballs) 
             {
                 Debug.Log("You are carrying too much!!");
             }
@@ -264,6 +268,23 @@ public class FirstPersonControls : MonoBehaviour
                 itemCount++;
                 UpdateItemCountUI();
                 Debug.Log(itemCount);
+            }
+            else if (hit.collider.CompareTag("Flyer")) //changed the tag from PickUp to Stow 
+            {
+
+                StowObject = hit.collider.gameObject;
+                Debug.Log("Object Hit");
+                Destroy(StowObject);//We want it to destroy the object because we want is so
+                                    // that once the item is picked up, it is added to the players 
+                                    // backpack so that once a player has collected a certain amount of that item
+                                    // they can then craft another item out of it 
+                                    // so eventually we'll have a
+                                    // if (itemCount==5)
+                                    // { craft item2 (idk the code for this yet)}
+
+                FlyerCount++;
+                UpdateFlyerCountUI();
+                Debug.Log(FlyerCount);
             }
         }
     }
@@ -330,13 +351,35 @@ public class FirstPersonControls : MonoBehaviour
                 }
                 // Start moving the door upwards
                 //StartCoroutine(RaiseDoor(hit.collider.gameObject));
+
+
+            }
+            else if (hit.collider.CompareTag("G.door")) // Check if the object is a door
+            {
+                if (itemCount >= RequiredGumballsGK) // Check if player has enough gumballs tp open the door
+                {
+                    // Open the door if enough gumballs are collected
+                    StartCoroutine(RaiseDoor(hit.collider.gameObject));
+                    errorMessageText.gameObject.SetActive(false); // Hide the error message if door is opened
+                }
+                else
+                {
+                    // Show error message if not enough gumballs are collected
+                    errorMessageText.text = "You need " + RequiredGumballsGK + " gumballs to open this door!";
+                    errorMessageText.gameObject.SetActive(true); // Show the error message
+                    StartCoroutine(HideErrorMessageAfterDelay()); // Start coroutine to hide the message
+                }
             }
         }
     }
 
     void UpdateItemCountUI()  //updates the UI text with the current item count as a string
     {
-        itemCountText.text = "Gumballs Collected: " + itemCount.ToString();
+        itemCountText.text = "- Gumballs Collected: " + itemCount.ToString() + "/5";
+    }
+    void UpdateFlyerCountUI()  //updates the UI text with the current item count as a string
+    {
+        FlyerCountText.text = "- Flyers Collected: " + FlyerCount.ToString() + "/5";
     }
 
     private IEnumerator RaiseDoor(GameObject door)

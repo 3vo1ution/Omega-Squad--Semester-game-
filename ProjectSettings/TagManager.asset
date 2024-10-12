@@ -13,6 +13,8 @@ TagManager:
   - Door
   - Health
   - Dialogue1
+  - G.door
+  - Flyer
   layers:
   - Default
   - TransparentFX
