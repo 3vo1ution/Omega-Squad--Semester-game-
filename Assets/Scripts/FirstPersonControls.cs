@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class FirstPersonControls : MonoBehaviour
 {
-    
+
 
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
@@ -71,6 +71,19 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject healthText;
     public GameObject dialogue1Text;
 
+    [Header("Flyer Interaction")]
+
+    public float interactionDistance;
+    //The distance from which the player can interact with an object
+
+    public GameObject interactionText;
+    //Text or crosshair that shows up to let the player know they can interact with an object they're looking at
+
+    public LayerMask interactionLayers;
+    //Layers the raycast can hit/interact with. Any layers unchecked will be ignored by the raycast.
+
+
+
     private void Awake()
     {
         inventory = new int[RequiredGumballs];
@@ -124,6 +137,7 @@ public class FirstPersonControls : MonoBehaviour
         LookAround();
         ApplyGravity();
         checkForPickup();
+        
     }
 
     public void Move()
@@ -248,7 +262,7 @@ public class FirstPersonControls : MonoBehaviour
 
                 holdingGun = true;
             }
-            if (itemCount >= RequiredGumballs) 
+            if (itemCount >= RequiredGumballs)
             {
                 Debug.Log("You are carrying too much!!");
             }
@@ -401,7 +415,7 @@ public class FirstPersonControls : MonoBehaviour
     private IEnumerator HideErrorMessageAfterDelay()
     {
         yield return new WaitForSeconds(errorMessageDuration); // Wait for the duration listed above
-        errorMessageText.gameObject.SetActive(false); 
+        errorMessageText.gameObject.SetActive(false);
     }
 
     public void checkForPickup()
@@ -430,4 +444,7 @@ public class FirstPersonControls : MonoBehaviour
 
 
     }
+
+ 
+
 }
