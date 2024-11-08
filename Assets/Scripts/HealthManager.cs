@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class HealthManager : MonoBehaviour
     public float timer;
 
     public HealthBar healthBar;
+    public GameObject sicklyFilter;
 
 
     private void Start()
@@ -36,6 +38,17 @@ public class HealthManager : MonoBehaviour
         {
             Die();
         }
+
+        if (currentHealth <= 40)
+        {
+            sicklyFilter.SetActive(true);
+        }
+
+        else
+        {
+            sicklyFilter.SetActive(false);
+        }
+    
     }
 
 

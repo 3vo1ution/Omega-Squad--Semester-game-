@@ -82,6 +82,11 @@ public class FirstPersonControls : MonoBehaviour
     public LayerMask interactionLayers;
     //Layers the raycast can hit/interact with. Any layers unchecked will be ignored by the raycast.
 
+    //sickly filter
+    public GameObject sicklyFilter;
+
+    public GameObject sugarRushFilter;
+
 
 
     private void Awake()
@@ -445,6 +450,53 @@ public class FirstPersonControls : MonoBehaviour
 
     }
 
- 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "SicklyTrigger")
+        {
+            sicklyFilter.SetActive(true);
+            Debug.Log("sickly on");
+        }
+        if (other.CompareTag("SugarRushPowerUp"))
+        {
+            // Trigger the speed boost and visual effect
+            ActivateSpeedBoost();
 
+            // Optionally, deactivate or destroy the power-up object
+            other.gameObject.SetActive(false);
+        }
+    }
+
+  
+
+
+    public float normalSpeed = 5f;
+    public float boostedSpeed = 10f;
+    public float boostDuration = 5f;
+
+    public void ActivateSpeedBoost()
+    {
+        StartCoroutine(SpeedBoostRoutine());
+    }
+
+    private IEnumerator SpeedBoostRoutine()
+    {
+        // Store the original speed
+        float originalSpeed = moveSpeed;
+
+        // Set the player's speed to the boosted speed
+        moveSpeed = boostedSpeed;
+
+        // Activate the sugar rush visual filter
+        sugarRushFilter.SetActive(true);
+
+        // Wait for the boost duration
+        yield return new WaitForSeconds(boostDuration);
+
+        // Revert the player's speed to the original speed
+        moveSpeed = originalSpeed;
+
+        // Deactivate the sugar rush visual filter
+        sugarRushFilter.SetActive(false);
+    }
 }
