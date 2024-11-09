@@ -5,6 +5,7 @@ using UnityEngine;
 public class SugarRushPickup : MonoBehaviour
 {
     public FirstPersonControls FirstPersonControls;
+
     public GameObject sugarRushFilter;
     private void OnTriggerEnter(Collider other)// this function is used when a trigger collider comes in contact with another collider, the other refers to the other collider
     {
