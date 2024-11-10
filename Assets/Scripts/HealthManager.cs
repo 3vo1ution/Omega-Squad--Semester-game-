@@ -2,7 +2,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class HealthManager : MonoBehaviour
+ public class HealthManager : MonoBehaviour
 {
     [SerializeField] public float MaxHealth;
     private float currentHealth;
@@ -48,6 +48,8 @@ public class HealthManager : MonoBehaviour
         {
             sicklyFilter.SetActive(false);
         }
+
+
     
     }
 
@@ -92,3 +94,5 @@ public class HealthManager : MonoBehaviour
 
 
 }
+
+

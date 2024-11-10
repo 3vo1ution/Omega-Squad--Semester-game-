@@ -17,6 +17,7 @@ TagManager:
   - Flyer
   - SicklyTrigger
   - SugarRushPowerUp
+  - RotArea
   layers:
   - Default
   - TransparentFX
