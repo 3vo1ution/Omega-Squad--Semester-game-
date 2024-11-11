@@ -24,19 +24,27 @@ public class EnemyPathfinding : MonoBehaviour
 
     void Update()
     {
-        // Check if agent is on the NavMesh and not disabled
         if (agent.isOnNavMesh && agent.enabled)
         {
-            // Check if the player is within the rot area and chase range
             if (IsPlayerInRotArea() && Vector3.Distance(transform.position, player.position) <= chaseRange)
             {
+                if (!isChasing)
+                {
+                    Debug.Log("Enemy started chasing the player.");
+                    // Potentially trigger animations or sound effects
+                }
                 isChasing = true;
-                agent.SetDestination(player.position);  // Move towards the player
+                agent.SetDestination(player.position);
             }
             else
             {
+                if (isChasing)
+                {
+                    Debug.Log("Enemy stopped chasing the player.");
+                    // Potentially stop animations or sound effects
+                }
                 isChasing = false;
-                agent.ResetPath();  // Stop moving and reset the path if no longer chasing
+                agent.ResetPath();
             }
         }
         else
@@ -44,6 +52,7 @@ public class EnemyPathfinding : MonoBehaviour
             Debug.LogWarning("Enemy's NavMeshAgent is either not on a NavMesh or disabled.");
         }
     }
+
 
     bool IsPlayerInRotArea()
     {

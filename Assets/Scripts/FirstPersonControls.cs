@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -108,7 +105,7 @@ public class FirstPersonControls : MonoBehaviour
     {
         UpdateItemCountUI(); // Initialize the UI with the current item count
         UpdateFlyerCountUI();
-        sicklyFilter.SetActive(false);
+       
 
     }
 

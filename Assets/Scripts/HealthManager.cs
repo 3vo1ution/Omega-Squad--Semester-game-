@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,7 +5,6 @@ using UnityEngine.SceneManagement;
 {
     [SerializeField] public float MaxHealth;
     private float currentHealth;
-    private float timeElapsed = 0f;//time since last decrease
     public float DecreaseInterval = 15f;// health decreases every 15 seconds
     public float HealthDecreaseAmount = 10f;//health decreases by 10 every 15 seconds
     public float timer;
