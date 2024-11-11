@@ -6,6 +6,8 @@ public class DialogueTrigger : MonoBehaviour
     public string dialogueLine;  // The dialogue line for this object
     public float customDuration = 5f;  // Optional custom duration for this dialogue
     private DialogueManager dialogueManager;
+    public AudioManager audioManager;
+    public AudioClip dialogueClip;
 
     private void Start()
     {
@@ -18,10 +20,8 @@ public class DialogueTrigger : MonoBehaviour
         {
             dialogueManager.ShowDialogue(dialogueLine, customDuration);  // Trigger with custom duration
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
        
     }
+
+
 }

@@ -122,53 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &22606868
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 22606870}
-  - component: {fileID: 22606869}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &22606869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22606868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41111b0cab165f141a9d542c6d06295c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  happyMusic: {fileID: 8300000, guid: 9368ac5930b828d459e601aadb0509db, type: 3}
-  eerieMusic: {fileID: 8300000, guid: 12ddba60a1cc3f94c85ffa4e28aab705, type: 3}
-  fadeDuration: 3
---- !u!4 &22606870
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22606868}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.95979, y: 2.9275267, z: -26.301762}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &695720339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,5 +1021,4 @@ SceneRoots:
   - {fileID: 695720342}
   - {fileID: 1901742759}
   - {fileID: 2012234772}
-  - {fileID: 22606870}
   - {fileID: 961354576}
