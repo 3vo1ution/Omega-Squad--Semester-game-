@@ -88,6 +88,13 @@ public class FirstPersonControls : MonoBehaviour
 
     public GameObject sugarRushFilter;
 
+    [Header("INTERACT SETTINGS")]
+    [Space(5)]
+    public GameObject objectToMove; // The object that will be moved when interacted with
+    public float OmoveDistance = 5f; // Distance the object will move
+    public float OmoveSpeed = 2f;
+    public ParticleSystem interactionEffect;
+
 
 
     private void Awake()
@@ -337,13 +344,15 @@ public class FirstPersonControls : MonoBehaviour
         {
             if (hit.collider.CompareTag("Switch")) // Assuming the switch has this tag
             {
-                if (currentTerrain != null && newTerrain != null)
+                if (interactionEffect != null)
                 {
-                    // Deactivate the current terrain
-                    currentTerrain.SetActive(false);
-
-                    // Activate the new terrain
-                    newTerrain.SetActive(true);
+                    interactionEffect.transform.position = hit.point; // Set the effect at the point of interaction
+                    interactionEffect.Play(); // Play the particle effect
+                }
+                // Trigger the movement of the specified object
+                if (objectToMove != null)
+                {
+                    StartCoroutine(MoveObject(objectToMove));
                 }
                 // Change the material color of the objects in the array
                 //  foreach (GameObject obj in objectsToChangeColor)
@@ -418,6 +427,21 @@ public class FirstPersonControls : MonoBehaviour
             door.transform.position = Vector3.MoveTowards(door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
             yield return null; // Wait until the next frame before continuing the loop
         }
+    }
+    private IEnumerator MoveObject(GameObject obj)
+    {
+        Vector3 startPosition = obj.transform.position; 
+        Vector3 endPosition = startPosition + Vector3.up * OmoveDistance; 
+
+        
+        while (Vector3.Distance(obj.transform.position, endPosition) > 0.01f)
+        {
+            obj.transform.position = Vector3.MoveTowards(obj.transform.position, endPosition, moveSpeed * Time.deltaTime);
+            yield return null; 
+        }
+
+        // Ensure the object reaches the final position 
+        obj.transform.position = endPosition;
     }
 
     private IEnumerator HideErrorMessageAfterDelay()
