@@ -15,15 +15,14 @@ public class MainMenuScript : MonoBehaviour
         Application.Quit();
     }
 
-    public void pauseGame()
-
-    {
-        SceneManager.LoadScene("StartingScene");
-    }
-
     public void startGame()
     {
         SceneManager.LoadScene("NewScene");
+    }
+
+    public void pauseGame()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 
 }
