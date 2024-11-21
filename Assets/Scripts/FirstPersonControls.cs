@@ -95,6 +95,10 @@ public class FirstPersonControls : MonoBehaviour
     public AudioSource soundEffects;
     public AudioClip raiseDoorSFX;
 
+    [Header("Animations")]
+    [Space(5)]
+    public Animator animator;
+
 
 
     private void Awake()
@@ -165,6 +169,11 @@ public class FirstPersonControls : MonoBehaviour
 
         // Adjust speed if crouching
         float currentSpeed;
+
+        if (moveInput.x == 0 && moveInput.y == 0)
+        {
+            currentSpeed = 0;  
+        }
         if (isCrouching)
         {
             currentSpeed = crouchSpeed;
@@ -177,6 +186,7 @@ public class FirstPersonControls : MonoBehaviour
 
         // Move the character controller based on the movement vector and speed
         characterController.Move(move * currentSpeed * Time.deltaTime);
+        animator.SetFloat("Speed", currentSpeed);
     }
 
     public void LookAround()
