@@ -5,6 +5,8 @@ public class PanelController : MonoBehaviour
 {
     public GameObject panel; 
     private bool isPanelActive = false;
+    public AudioSource sound;
+    public AudioClip buttonPressSFX;
     void Start()
     {
         panel.SetActive(false);
@@ -15,6 +17,7 @@ public class PanelController : MonoBehaviour
     {
         isPanelActive = !isPanelActive;
         panel.SetActive(isPanelActive);
+
     }
 
     // disable the panel when clicking outside of it
@@ -31,6 +34,10 @@ public class PanelController : MonoBehaviour
                 panel.SetActive(false);
                 isPanelActive = false;
             }
+
+
         }
+
+
     }
 }
