@@ -6,6 +6,8 @@ public class SugarRushPickup : MonoBehaviour
     public FirstPersonControls FirstPersonControls;
 
     public GameObject sugarRushFilter;
+    public AudioSource soundEffects;
+    public AudioClip sugarRushSFX;
  
     private void OnTriggerEnter(Collider other)// this function is used when a trigger collider comes in contact with another collider, the other refers to the other collider
     {
@@ -17,6 +19,7 @@ public class SugarRushPickup : MonoBehaviour
             StartCoroutine(StopSugarRush());
         }
         Destroy(gameObject);// get rid of health after player passes through it
+        soundEffects.clip = sugarRushSFX;
 
     }
 

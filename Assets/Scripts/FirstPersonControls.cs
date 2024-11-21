@@ -92,6 +92,9 @@ public class FirstPersonControls : MonoBehaviour
     public float OmoveSpeed = 2f;
     public ParticleSystem interactionEffect;
 
+    public AudioSource soundEffects;
+    public AudioClip raiseDoorSFX;
+
 
 
     private void Awake()
@@ -424,6 +427,9 @@ public class FirstPersonControls : MonoBehaviour
             door.transform.position = Vector3.MoveTowards(door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
             yield return null; // Wait until the next frame before continuing the loop
         }
+
+        soundEffects.clip = raiseDoorSFX;
+        soundEffects.Play();
     }
     private IEnumerator MoveObject(GameObject obj)
     {
@@ -471,6 +477,8 @@ public class FirstPersonControls : MonoBehaviour
 
         }
 
+        
+
 
     }
 
@@ -489,6 +497,7 @@ public class FirstPersonControls : MonoBehaviour
             // Optionally, deactivate or destroy the power-up object
             other.gameObject.SetActive(false);
         }
+
     }
 
   
