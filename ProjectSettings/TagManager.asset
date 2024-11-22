@@ -18,6 +18,7 @@ TagManager:
   - SicklyTrigger
   - SugarRushPowerUp
   - RotArea
+  - Interactable
   layers:
   - Default
   - TransparentFX
