@@ -11,6 +11,8 @@ public class HealthBar : MonoBehaviour
     public void SetSlider(float health)
     {
         healthSlider.value = health;
+        Debug.Log($"Health bar updated: {health}");
+
     }
 
     public void SetMaxHealth(float health)
@@ -19,5 +21,6 @@ public class HealthBar : MonoBehaviour
         SetSlider(health);
     }
 
+   
 
 }

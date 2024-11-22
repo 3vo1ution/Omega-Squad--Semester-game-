@@ -99,6 +99,11 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public Animator animator;
 
+    [Header("Sounds")]
+    [Space(5)]
+   
+    public AudioClip PickUp;
+
 
 
     private void Awake()
@@ -262,6 +267,12 @@ public class FirstPersonControls : MonoBehaviour
         Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
 
 
+        {
+            soundEffects.clip = PickUp;
+            soundEffects.Play();
+        }
+
+
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
             // Check if the hit object has the tag "PickUp"
@@ -275,6 +286,7 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
+
             }
             else if (hit.collider.CompareTag("Gun"))
             {
